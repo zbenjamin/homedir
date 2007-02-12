@@ -19,7 +19,7 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
-    PATH=~/bin:"${PATH}"
+    export PATH=~/bin:"${PATH}"
 fi
 
 # do the same with MANPATH
@@ -28,8 +28,9 @@ fi
 #    export MANPATH
 #fi
 
-# added 09/19/2004
-PATH="${PATH}":/opt/Qtopia/bin
-
 export EDITOR=dtemacs
 export BROWSER="/home/zev/bin/openurl.pl"
+
+if [ -e ~/.bash_profile.`hostname` ] ; then
+    source ~/.bash_profile.`hostname`
+fi

@@ -43,5 +43,12 @@ if [ "$PS1" ]; then
      . /etc/bash_completion
     fi
     complete -C ~/bin/svk-completion.pl -o default svk
+else
+    if [ -d ~/bin ] ; then
+        export PATH=~/bin:"${PATH}"
+    fi
+fi
 
+if [ -e ~/.bashrc.`hostname` ] ; then
+    source ~/.bashrc.`hostname`
 fi
