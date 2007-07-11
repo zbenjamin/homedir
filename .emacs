@@ -2,7 +2,11 @@
 (add-to-list 'load-path "~/elisp/ses21-031130")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
 (add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
+(add-to-list 'load-path "~/elisp/gnuserv")
 (require 'pod-mode)
+
+(require 'winring)
+(winring-initialize)
 
 (set-background-color "dark slate gray")
 (set-foreground-color "khaki")
