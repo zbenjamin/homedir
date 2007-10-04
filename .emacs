@@ -3,7 +3,10 @@
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
 (add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
 (add-to-list 'load-path "~/elisp/gnuserv")
+(load-file "~/elisp/graphviz-dot-mode.el")
+
 (require 'pod-mode)
+(require 'dirvars)
 
 (require 'winring)
 (winring-initialize)
@@ -202,6 +205,7 @@
  '(fill-column 69)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
+ '(indicate-empty-lines t)
  '(printer-name "jarthur" t)
  '(ps-lpr-command "lpr")
  '(ps-printer-name nil)

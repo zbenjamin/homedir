@@ -30,6 +30,7 @@ fi
 
 export EDITOR=dtemacs
 export BROWSER="/home/zev/bin/openurl.pl"
+export PYTHONPATH="/home/zev/lib/python2.4:$PYTHONPATH"
 
 if [ -e ~/.bash_profile.`hostname` ] ; then
     source ~/.bash_profile.`hostname`
