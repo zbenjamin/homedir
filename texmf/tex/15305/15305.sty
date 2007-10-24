@@ -1,0 +1,28 @@
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage{ifthen}
+
+\newcommand\Section[1]{\section*{\protect \centering \normalsize \texttt{#1}}}
+\newcommand\Title[2]{\begin{center}
+    \textbf{\uppercase{#1}}
+    \ifthenelse{\equal{#2}{}}
+    {}
+    {\\#2}
+\end{center}}
+
+\raggedright
+
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\lhead{}
+\rhead{}
+\lfoot{}
+\cfoot{}
+\rfoot{\texttt{Zev Benjamin/15.305/\DueDate}}
+
+\newcommand\Start{\includegraphics[width=1in]{../mit_seal_b_w.eps}\tt}
+\newcommand\DueDate{\today}
+\newcommand\Due[1]{\renewcommand\DueDate{#1}}
+
