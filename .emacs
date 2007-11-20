@@ -12,6 +12,7 @@
 
 (set-background-color "dark slate gray")
 (set-foreground-color "khaki")
+(set-cursor-color "khaki")
 (setq inhibit-splash-screen t)
 (show-paren-mode 1)
 (iswitchb-mode 1)
