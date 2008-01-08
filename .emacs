@@ -120,8 +120,8 @@
 
 (global-set-key (kbd "C-x p") 'cperl-perldoc)
 
-(add-to-list 'auto-mode-alist
-             '("\\.pod$" . pod-mode))
+(add-to-list 'auto-mode-alist '("\\.t$" . cperl-mode))
+(add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
 
 (add-hook 'pod-mode-hook
           '(lambda ()
@@ -137,7 +137,15 @@
     (shell-command-on-region (point) (mark) "perltidy -i=2 -q -pt 2 -sbt 2 -bt 2" nil t)))
 
 ;;
-;; end Perl stuff
+;; Parrot stuff
+;;
+
+(autoload 'pir-mode "pir-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.pir\\'" . pir-mode))
+
+
+;;
+;; Scheme stuff
 ;;
 
 (add-hook 'scheme-mode-hook 'bind-tab-to-indent-or-complete)
@@ -177,6 +185,9 @@
   (load "xscheme")
   (run-scheme "~/bin/scmutils -emacs"))
 
+;;
+;; Flex/Jflex
+;;
 
 (autoload 'jflex-mode "jflex-mode" nil t)
 (setq auto-mode-alist (cons '("\\(\\.flex\\|\\.jflex\\)\\'" . jflex-mode) auto-mode-alist))
