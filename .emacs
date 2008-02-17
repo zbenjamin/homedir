@@ -142,7 +142,7 @@
 
 (autoload 'pir-mode "pir-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.pir\\'" . pir-mode))
-
+(setq pir-basic-indent 4)
 
 ;;
 ;; Scheme stuff
