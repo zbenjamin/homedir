@@ -14,8 +14,8 @@ if ($url !~ m/^(https?|ftp):\/\//i) {
 
 #print "url: $url\n";
 
-@args = ( 'openurl(' . $url . ',new-tab)');
-system( '/usr/lib/firefox/firefox-xremote-client' , @args );
+@args = ( '-new-tab', $url);
+system( '/usr/bin/firefox' , @args );
 
 if ($? == -1) {
   print "failed to execute: $!\n";
