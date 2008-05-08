@@ -3,7 +3,7 @@
 [ -r /etc/profile ] && source /etc/profile
 [ -r ~/.bash_profile ] && source ~/.bash_profile
 
-[ -x /usr/bin/afuse ] && afuse -o mount_template='sshfs -o reconnect %r:/ %m' -o unmount_template='fusermount -u -z %m' ~/sshfs
+[ -x /usr/bin/afuse ] && afuse -o mount_template='sshfs -o reconnect -o workaround=rename %r:/ %m' -o unmount_template='fusermount -u -z %m' ~/sshfs
 
 x-session-manager
 
