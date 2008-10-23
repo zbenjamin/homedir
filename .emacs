@@ -20,8 +20,10 @@
 (tool-bar-mode -1)
 (setq dabbrev-case-fold-search nil)
 
+
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
+(global-set-key (kbd "M-g") 'goto-line)
 
 (add-hook 'term-exec-hook
            (lambda ()
@@ -31,7 +33,7 @@
 ;;
 ;; stuff for ROOT/PROOF development
 ;;
-(c-add-style 
+(c-add-style
  "root"
  '((c-basic-offset . 3)
    (indent-tabs-mode . nil)))
@@ -40,7 +42,7 @@
   (c++-mode)
   (c-set-style "root"))
 
-(setq 
+(setq
  auto-mode-alist
  (append '(("^/home/zev/root/.+\\.h" . root-mode))
 	 '(("^/home/zev/root/.+\\.cxx" . root-mode))
@@ -75,7 +77,7 @@
   (interactive)
   (indent-for-tab-command)
   (if (looking-at "\\>$")
-      (dabbrev-expand nil)))
+      (senator-complete-symbol (point))))
 
 (defun bind-tab-to-indent-or-complete ()
   "Binds the tab key to indent-or-complete"
@@ -207,8 +209,10 @@
 
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.saves"))))
  '(case-fold-search t)
@@ -218,13 +222,20 @@
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
- '(printer-name "jarthur" t)
+ '(jde-jdk-registry (quote (("6" . "/usr/lib/jvm/java-6-sun"))))
+ '(printer-name "jarthur")
  '(ps-lpr-command "lpr")
  '(ps-printer-name nil)
+ '(save-abbrevs nil)
  '(transient-mark-mode t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom -- don't edit or cut/paste it!
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(mmm-default-submode-face ((t (:background "black")))))
 
 (put 'upcase-region 'disabled nil)
+
+(put 'downcase-region 'disabled nil)
+(setq confirm-kill-emacs 'yes-or-no-p)
