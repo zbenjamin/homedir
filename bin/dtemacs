@@ -18,7 +18,7 @@ GNU_SECURE=~/.gnuclient.hosts
 if ${GNUCLIENT} ${GNUCLIENTPINGOPTIONS} >/dev/null 2>&1 ; then
     :
 else
-    ${EMACS} -iconic -f gnuserv-start -eval '(setq gnuserv-frame (selected-frame))' 2>&1 >/dev/null &
+   ${EMACS} -iconic -f gnuserv-start -eval '(setq gnuserv-frame (selected-frame))' --font "liberation mono-11" 2>&1 >/dev/null &
 fi
  
 # Try for TIMEOUT seconds to talk to the Emacs process.
@@ -34,5 +34,3 @@ until ${GNUCLIENT} ${GNUCLIENTPINGOPTIONS} >/dev/null 2>&1 ; do
 done
  
 exec ${GNUCLIENT} ${1+"$@"}
-
-

@@ -1,3 +1,5 @@
+;;; -*- coding: utf-8 -*-
+
 (add-to-list 'load-path "~/elisp")
 (add-to-list 'load-path "~/elisp/ses21-031130")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
@@ -156,7 +158,8 @@
   (font-lock-add-keywords
    nil `(("\\<lambda\\>"
 	  (0 (progn (compose-region (match-beginning 0) (match-end 0)
-				    ,(make-char 'greek-iso8859-7 107))
+                                    ;,(make-char 'greek-iso8859-7 107))
+				    ?λ)
 		    nil))))))
 
 (add-hook 'emacs-lisp-mode-hook 'pretty-lambdas)
@@ -222,9 +225,9 @@
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
+ '(printer-name "ASEC" t)
+ '(ps-lpr-command "lpr-cups")
  '(jde-jdk-registry (quote (("6" . "/usr/lib/jvm/java-6-sun"))))
- '(printer-name "jarthur")
- '(ps-lpr-command "lpr")
  '(ps-printer-name nil)
  '(save-abbrevs nil)
  '(transient-mark-mode t))
