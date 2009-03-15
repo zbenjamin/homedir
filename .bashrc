@@ -24,6 +24,7 @@ if [ "$PS1" ]; then
     #alias ll='ls -l'
     #alias la='ls -A'
     #alias l='ls -CF'
+    alas rm='rm --one-file-system'
 
     # set a fancy prompt
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
