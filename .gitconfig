@@ -1,0 +1,9 @@
+[user]
+	name = Zev Benjamin
+	email = zev@mit.edu
+[color]
+	ui = auto
+[alias]
+	st = status
+        ci = commit
+        co = checkout
