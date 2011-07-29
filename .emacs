@@ -1,7 +1,6 @@
 ;;; -*- coding: utf-8 -*-
 
 (add-to-list 'load-path "~/elisp")
-(add-to-list 'load-path "~/elisp/ses21-031130")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
 (add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
 (add-to-list 'load-path "~/elisp/gnuserv")
@@ -11,6 +10,30 @@
 
 (require 'winring)
 (winring-initialize)
+
+(require 'uniquify)
+(setq uniquify-buffer-name-style 'forward)
+(setq uniquify-after-kill-buffer-p t)
+
+(require 'window-numbering)
+(window-numbering-mode 1)
+
+(defadvice iswitchb-kill-buffer (after rescan-after-kill activate)
+  "*Regenerate the list of matching buffer names after a kill.
+    Necessary if using `uniquify' with `uniquify-after-kill-buffer-p'
+    set to non-nil."
+  (setq iswitchb-buflist iswitchb-matches)
+  (iswitchb-rescan))
+
+(defun iswitchb-rescan ()
+  "*Regenerate the list of matching buffer names."
+  (interactive)
+  (iswitchb-make-buflist iswitchb-default)
+  (setq iswitchb-rescan t))
+
+;; (setq semanticdb-project-roots
+;;       (list "/home/zev/code/meng"))
+;; (semantic-load-enable-excessive-code-helpers)
 
 (set-background-color "dark slate gray")
 (set-foreground-color "khaki")
@@ -31,6 +54,14 @@
            (lambda ()
              (define-key term-mode-map (kbd "<prior>") 'scroll-down)
              (define-key term-mode-map (kbd "<next>") 'scroll-up)))
+
+;;
+;; general C/C++ stuff
+;;
+
+(define-key c-mode-map (kbd "C-c C-c") 'compile)
+(define-key c++-mode-map (kbd "C-c C-c") 'compile)
+(setq compilation-read-command nil)
 
 ;;
 ;; stuff for ROOT/PROOF development
@@ -219,15 +250,11 @@
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.saves"))))
  '(case-fold-search t)
- '(current-language-environment "Latin-1")
- '(default-input-method "latin-1-prefix")
  '(fill-column 69)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
- '(printer-name "ASEC" t)
  '(ps-lpr-command "lpr-cups")
- '(jde-jdk-registry (quote (("6" . "/usr/lib/jvm/java-6-sun"))))
  '(ps-printer-name nil)
  '(save-abbrevs nil)
  '(transient-mark-mode t))

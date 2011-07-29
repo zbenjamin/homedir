@@ -32,6 +32,7 @@ export EDITOR=dtemacs
 export BROWSER="/home/zev/bin/openurl.pl"
 export PYTHONPATH="/home/zev/lib/python2.4:$PYTHONPATH"
 export GREP_OPTIONS="--color=auto"
+export GTK_IM_MODULE=xim
 
 if [ -e ~/.xmodmap ] ; then
     xmodmap ~/.xmodmap
