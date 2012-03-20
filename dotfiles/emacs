@@ -31,9 +31,6 @@
   (iswitchb-make-buflist iswitchb-default)
   (setq iswitchb-rescan t))
 
-;; (setq semanticdb-project-roots
-;;       (list "/home/zev/code/meng"))
-;; (semantic-load-enable-excessive-code-helpers)
 
 (set-background-color "dark slate gray")
 (set-foreground-color "khaki")
