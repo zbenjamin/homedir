@@ -1,2 +1,15 @@
+$include /etc/inputrc
+
 set bind-tty-special-chars Off
+
+$if mode=emacs
+
+## libvte is brok such that this doesn't work (gnome bugzilla bug 420039)
+# C-rubout: backwards-kill-word
+
 C-w: unix-filename-rubout
+C-h: previous-history
+C-n: next-history
+C-p: nil
+
+$endif

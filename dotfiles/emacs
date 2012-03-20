@@ -5,18 +5,22 @@
 (add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
 (add-to-list 'load-path "~/elisp/gnuserv")
 
-(require 'pod-mode)
-(require 'dirvars)
+(set-background-color "dark slate gray")
+(set-foreground-color "khaki")
+(set-cursor-color "khaki")
+(setq inhibit-splash-screen t)
+(show-paren-mode 1)
+(iswitchb-mode 1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
+(setq dabbrev-case-fold-search nil)
 
-(require 'winring)
-(winring-initialize)
+(require 'pod-mode)
+; (require 'dirvars)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
 (setq uniquify-after-kill-buffer-p t)
-
-(require 'window-numbering)
-(window-numbering-mode 1)
 
 (defadvice iswitchb-kill-buffer (after rescan-after-kill activate)
   "*Regenerate the list of matching buffer names after a kill.
@@ -31,34 +35,28 @@
   (iswitchb-make-buflist iswitchb-default)
   (setq iswitchb-rescan t))
 
+(require 'window-numbering)
+(window-numbering-mode 1)
 
-(set-background-color "dark slate gray")
-(set-foreground-color "khaki")
-(set-cursor-color "khaki")
-(setq inhibit-splash-screen t)
-(show-paren-mode 1)
-(iswitchb-mode 1)
-(scroll-bar-mode -1)
-(tool-bar-mode -1)
-(setq dabbrev-case-fold-search nil)
+;; (autoload 'dtrt-indent-mode "dtrt-indent" "Adapt to foreign indentation offsets" t)
+;; (add-hook 'c-mode-common-hook 'dtrt-indent-mode)
 
 
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 (global-set-key (kbd "M-g") 'goto-line)
 
+(global-set-key (kbd "M-h") 'help-command)
+(global-unset-key (kbd "C-p"))
+(global-set-key (kbd "C-h") 'previous-line)
+
+(define-key minibuffer-local-map (kbd "M-p") nil)
+(define-key minibuffer-local-map (kbd "M-h") 'previous-history-element)
+
 (add-hook 'term-exec-hook
            (lambda ()
              (define-key term-mode-map (kbd "<prior>") 'scroll-down)
              (define-key term-mode-map (kbd "<next>") 'scroll-up)))
-
-;;
-;; general C/C++ stuff
-;;
-
-(define-key c-mode-map (kbd "C-c C-c") 'compile)
-(define-key c++-mode-map (kbd "C-c C-c") 'compile)
-(setq compilation-read-command nil)
 
 ;;
 ;; stuff for ROOT/PROOF development
@@ -98,9 +96,19 @@
 	    (setq c-basic-offset 4)
 	    (setq indent-tabs-mode nil)))
 
+;;
+;; C/C++ stuff
+;;
+
 ;; Rebinds RET to 'newline-and-indent, and C-j to 'newline
 (global-set-key "\15" 'newline-and-indent)
 (global-set-key "\12" 'newline)
+
+(defun set-no-namespace-indentation ()
+  (c-set-offset 'innamespace 0))
+
+(defun set-no-extern-indentation ()
+  (c-set-offset 'inextern-lang 0))
 
 (defun indent-or-complete ()
   "Complete if point is at end of a word, otherwise indent line."
@@ -115,6 +123,12 @@
   (local-set-key "\11" 'indent-or-complete))
 
 (add-hook 'cc-mode-hook 'bind-tab-to-indent-or-complete)
+(add-hook 'cc-mode-hook 'set-no-namespace-indentation)
+(add-hook 'cc-mode-hook 'set-no-extern-indentation)
+
+(setq c-default-style '((java-mode . "java")
+                        (awk-mode . "awk")
+                        (other . "stroustrup")))
 
 (defun astyle-region ()
   "Run astyle on the current region, preserving initial whitespace"
@@ -133,10 +147,6 @@
         (if (< (point) end)
             (forward-line 1))))))
 
-
-;;
-;; end 6.170 stuff
-;;
 
 ;;
 ;; Perl stuff
