@@ -1,4 +1,4 @@
-;;; -*- coding: utf-8 -*-
+;;; -*- coding: utf-8 mode: lisp -*-
 
 (add-to-list 'load-path "~/elisp")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
