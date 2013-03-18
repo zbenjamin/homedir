@@ -38,6 +38,11 @@
 (require 'window-numbering)
 (window-numbering-mode 1)
 
+(require 'column-marker)
+(add-hook 'c-mode-common-hook (lambda () (column-marker-1 80)))
+(add-hook 'python-mode-hook (lambda () (column-marker-1 80)))
+(add-hook 'js-mode-hook (lambda () (column-marker-1 80)))
+
 ;; (autoload 'dtrt-indent-mode "dtrt-indent" "Adapt to foreign indentation offsets" t)
 ;; (add-hook 'c-mode-common-hook 'dtrt-indent-mode)
 
@@ -273,6 +278,7 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
+ '(column-marker-1 ((t (:background "dark cyan"))))
  '(mmm-default-submode-face ((t (:background "black")))))
 
 (put 'upcase-region 'disabled nil)
