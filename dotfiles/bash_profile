@@ -18,6 +18,3 @@ fi
 #    MANPATH=~/man:"${MANPATH}"
 #    export MANPATH
 #fi
-
-export EDITOR=emacs
-export LESS="--no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
