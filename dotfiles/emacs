@@ -53,6 +53,9 @@
 (define-key minibuffer-local-map (kbd "M-p") nil)
 (define-key minibuffer-local-map (kbd "M-h") 'previous-history-element)
 
+(define-key isearch-mode-map (kbd "C-h") 'isearch-other-control-char)
+(define-key isearch-mode-map (kbd "M-h M-h") 'isearch-help-for-help)
+
 (add-hook 'term-exec-hook
            (lambda ()
              (define-key term-mode-map (kbd "<prior>") 'scroll-down)
