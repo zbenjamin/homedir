@@ -14,6 +14,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq dabbrev-case-fold-search nil)
+(setq split-height-threshold nil)
 
 (require 'pod-mode)
 ; (require 'dirvars)
