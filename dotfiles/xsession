@@ -6,7 +6,7 @@
 autocutsel -fork
 autocutsel -selection PRIMARY -fork
 
-[ -x /usr/bin/afuse ] && afuse -o mount_template='sshfs -o reconnect -o workaround=rename %r:/ %m' -o unmount_template='fusermount -u -z %m' ~/sshfs
+[ -x /usr/bin/afuse ] && afuse -o mount_template='sshfs -o reconnect -o workaround=rename %r:/ %m' -o unmount_template='fusermount -u -z %m' -o timeout 600 ~/sshfs
 
 # to get the new notification system instead of the old one
 export GDMSESSION=gnome
