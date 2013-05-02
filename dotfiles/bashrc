@@ -103,6 +103,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Autcomplete git deploy-branch like git branch
+_git_deploy_branch() {
+    _git_branch
+}
+
 #
 # Local modifications
 #
