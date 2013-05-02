@@ -284,6 +284,7 @@
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.saves"))))
  '(case-fold-search t)
+ '(epa-file-name-regexp "\\.\\(gpg\\|asc\\)\\(~\\|\\.~[0-9]+~\\)?\\'")
  '(fill-column 69)
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
