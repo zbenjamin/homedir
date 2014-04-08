@@ -167,8 +167,6 @@
 (add-hook 'perl-mode-hook 'bind-tab-to-indent-or-complete)
 (add-hook 'cperl-mode-hook 'bind-tab-to-indent-or-complete)
 
-(global-set-key (kbd "C-x p") 'cperl-perldoc)
-
 (add-to-list 'auto-mode-alist '("\\.t$" . cperl-mode))
 (add-to-list 'auto-mode-alist '("\\.pod$" . pod-mode))
 
@@ -272,7 +270,6 @@
   (interactive "r")
   (let ((fill-column (point-max)))
     (fill-region beg end)))
-
 
 (custom-set-variables
   ;; custom-set-variables was added by Custom.
