@@ -42,6 +42,9 @@
 (add-hook 'python-mode-hook (lambda () (column-marker-1 80)))
 (add-hook 'js-mode-hook (lambda () (column-marker-1 80)))
 
+(autoload 'pianobar "pianobar" nil t)
+(global-set-key (kbd "C-x p") 'pianobar-play-or-pause)
+
 ;; (autoload 'dtrt-indent-mode "dtrt-indent" "Adapt to foreign indentation offsets" t)
 ;; (add-hook 'c-mode-common-hook 'dtrt-indent-mode)
 
