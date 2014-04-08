@@ -8,6 +8,11 @@
 #    . ~/.bashrc
 #fi
 
+# make sure that /usr/local/bin is before /usr/bin
+if [ -d /usr/local/bin ] ; then
+    export PATH=/usr/local/bin:"${PATH}"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
     export PATH=~/bin:"${PATH}"
