@@ -1,5 +1,4 @@
 ;;; -*- coding: utf-8 mode: lisp -*-
-
 (add-to-list 'load-path "~/elisp")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
 (add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
@@ -17,7 +16,6 @@
 (setq split-height-threshold nil)
 
 (require 'pod-mode)
-; (require 'dirvars)
 
 (require 'uniquify)
 (setq uniquify-buffer-name-style 'forward)
