@@ -92,6 +92,34 @@
 ;;
 
 ;;
+;; Postgres development stuff
+;;
+
+(c-add-style "pgsql"
+             '("bsd"
+               (fill-column . 79)
+               (indent-tabs-mode . t)
+               (c-basic-offset   . 4)
+               (tab-width . 4)
+               (c-offsets-alist .
+                                ((case-label . +))))
+             nil ) ; t = set this mode, nil = don't
+
+(defun pgsql-c-mode ()
+  (c-mode)
+  (c-set-style "pgsql"))
+
+(setq auto-mode-alist
+      (cons '("\\(postgres\\|pgsql\\).*\\.[chyl]\\'" . pgsql-c-mode)
+            auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\(postgres\\|pgsql\\).*\\.cc\\'" . pgsql-c-mode)
+            auto-mode-alist))
+(setq auto-mode-alist
+      (cons '("\\(tsearch_extras\\).*\\.[chyl]\\'" . pgsql-c-mode)
+            auto-mode-alist))
+
+;;
 ;; 6.004 stuff
 ;;
 
