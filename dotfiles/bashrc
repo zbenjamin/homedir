@@ -159,3 +159,5 @@ export PROMPT_COMMAND=_print_prompt
 
 export EDITOR=emacs
 export LESS="--no-init --quit-if-one-screen --RAW-CONTROL-CHARS"
+
+export DEBEMAIL=zev@zulip.com
