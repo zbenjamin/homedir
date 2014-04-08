@@ -1,7 +1,6 @@
 ;;; -*- coding: utf-8 mode: lisp -*-
 (add-to-list 'load-path "~/elisp")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
-(add-to-list 'load-path "~/elisp/cc-mode-5.31.3")
 (add-to-list 'load-path "~/elisp/gnuserv")
 
 (set-background-color "dark slate gray")
