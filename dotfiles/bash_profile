@@ -23,3 +23,9 @@ fi
 #    MANPATH=~/man:"${MANPATH}"
 #    export MANPATH
 #fi
+
+if [ $(uname -s) = "Darwin" ]; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+fi
