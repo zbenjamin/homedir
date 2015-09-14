@@ -14,6 +14,8 @@
 (setq dabbrev-case-fold-search nil)
 (setq split-height-threshold nil)
 
+(global-set-key "\C-ca" 'org-agenda)
+
 (require 'pod-mode)
 
 (require 'uniquify)
@@ -66,6 +68,8 @@
            (lambda ()
              (define-key term-mode-map (kbd "<prior>") 'scroll-down)
              (define-key term-mode-map (kbd "<next>") 'scroll-up)))
+
+(setq org-directory "~/org")
 
 ;;
 ;; stuff for ROOT/PROOF development
@@ -288,6 +292,12 @@
 
 (add-to-list 'auto-mode-alist '("\\.pp$" . puppet-mode))
 
+;;
+;; Javascript
+;;
+
+(add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+
 ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
 ;;; Takes a multi-line paragraph and makes it into a single line of text.
 (defun unfill-paragraph ()
@@ -302,10 +312,10 @@
     (fill-region beg end)))
 
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(backup-by-copying t)
  '(backup-directory-alist (quote (("." . "~/.saves"))))
  '(case-fold-search t)
@@ -319,11 +329,12 @@
  '(save-abbrevs nil)
  '(transient-mark-mode t))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  '(column-marker-1 ((t (:background "dark cyan"))))
+ '(js2-function-param ((t (:foreground "medium sea green"))))
  '(mmm-default-submode-face ((t (:background "black")))))
 
 (put 'upcase-region 'disabled nil)
