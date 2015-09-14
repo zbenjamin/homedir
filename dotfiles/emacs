@@ -2,6 +2,12 @@
 (add-to-list 'load-path "~/elisp")
 (add-to-list 'load-path "~/elisp/pod-mode-0.4")
 (add-to-list 'load-path "~/elisp/gnuserv")
+(add-to-list 'load-path "~/.emacs.d/elpa")
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.org/packages/") t)
+(package-initialize)
 
 (set-background-color "dark slate gray")
 (set-foreground-color "khaki")
@@ -14,8 +20,9 @@
 (setq dabbrev-case-fold-search nil)
 (setq split-height-threshold nil)
 
-(global-set-key "\C-ca" 'org-agenda)
+(add-hook 'after-init-hook #'global-flycheck-mode)
 
+(require 'erlang)
 (require 'pod-mode)
 
 (require 'uniquify)
@@ -69,7 +76,39 @@
              (define-key term-mode-map (kbd "<prior>") 'scroll-down)
              (define-key term-mode-map (kbd "<next>") 'scroll-up)))
 
-(setq org-directory "~/org")
+(add-to-list 'exec-path "/usr/local/bin")
+
+(defun entity-at-point ()
+  (interactive)
+  (let* ((beg (save-excursion (skip-chars-backward "a-z0-9A-Z_./\-" (point-at-bol))
+                              (point)))
+         (end (save-excursion (skip-chars-forward "a-z0-9A-Z_./\-" (point-at-eol))
+                              (point))))
+    (buffer-substring beg end)))
+
+(defun switch-to-window-by-name (name)
+  (select-window (get-buffer-window name)))
+
+(defun ack-at-point-and-switch ()
+  "ack and a half at point"
+  (interactive)
+  (let ((dir (ack-and-a-half-read-dir)))
+    (ack-and-a-half-run dir
+                        t
+                        (read-from-minibuffer (concat "ack (dir: "
+                                                      dir
+                                                      "): ")
+                                              (entity-at-point)
+                                              nil
+                                              nil
+                                              'ack-and-a-half-regexp-history
+                                              )
+                        "--nopager"))
+  (switch-to-window-by-name "*ack-and-a-half*"))
+(global-set-key (kbd "C-c C-a") 'ack-at-point-and-switch)
+
+(eval-after-load "ack-and-a-half-autoloads"
+  '(require 'ack-and-a-half))
 
 ;;
 ;; stuff for ROOT/PROOF development
@@ -298,6 +337,24 @@
 
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 
+
+;;
+;; org-mode
+;;
+(global-set-key "\C-ca" 'org-agenda)
+
+(defun org-cmp-important-urgent (a b)
+  (let* ((ta (get-text-property 1 'tags a))
+         (tb (get-text-property 1 'tags b))
+         (tai (if (member "important" ta) 2 0))
+         (tbi (if (member "important" tb) 2 0))
+         (tau (if (member "urgent" ta) 1 0))
+         (tbu (if (member "urgent" tb) 1 0))
+         (ar (+ tai tau))
+         (br (+ tbi tbu)))
+    (cond ((< ar br) -1)
+          ((< br ar) +1))))
+
 ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph
 ;;; Takes a multi-line paragraph and makes it into a single line of text.
 (defun unfill-paragraph ()
@@ -324,6 +381,9 @@
  '(global-font-lock-mode t nil (font-lock))
  '(indent-tabs-mode nil)
  '(indicate-empty-lines t)
+ '(org-agenda-cmp-user-defined (quote org-cmp-important-urgent))
+ '(org-agenda-files (quote ("~/org/jaguar.org" "~/org/recruiting.org" "~/org/eventbus.org" "~/org/misc_work.org" "~/org/personal.org" "~/org/intern.org")))
+ '(org-agenda-sorting-strategy (quote ((agenda habit-down time-up priority-down category-keep) (todo user-defined-down priority-down category-keep) (tags priority-down category-keep) (search category-keep))))
  '(ps-lpr-command "lpr-cups")
  '(ps-printer-name nil)
  '(save-abbrevs nil)
@@ -341,3 +401,7 @@
 
 (put 'downcase-region 'disabled nil)
 (setq confirm-kill-emacs 'yes-or-no-p)
+(setq use-dialog-box nil)
+
+(setq mac-command-modifier 'meta)
+(setq mac-option-modifier 'super)
