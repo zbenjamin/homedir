@@ -1,3 +1,4 @@
 .org-id-locations
 tramp
 auto-save-list
+local-config.el
