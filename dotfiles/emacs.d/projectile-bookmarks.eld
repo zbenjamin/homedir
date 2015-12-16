@@ -1,0 +1,1 @@
+("~/src/python-2.7.8/" "~/src/server/" "~/src/pylons/" "~/src/paste/" "~/src/pycurl/" "~/src/tornado/" "~/src/zulip/")
