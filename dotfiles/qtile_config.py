@@ -176,7 +176,7 @@ def makebar():
                 widget.TaskList(),
                 widget.Systray(),
                 widget.CPUGraph(),
-                widget.BatteryIcon(),
+                widget.BatteryIcon(), # theme_path="/usr/share/icons/ubuntu-mono-dark/status/24/"),
 #                widget.Volume(),
                 widget.Clock(format='%Y-%m-%d %a %H:%M'),
             ],
