@@ -28,7 +28,6 @@ from libqtile.config import Key, Screen, Group, Drag, Click
 from libqtile.command import lazy
 from libqtile import layout, bar, hook, widget
 
-import logging
 import os
 import subprocess
 
@@ -234,4 +233,4 @@ def restart_on_screen_change(qtile, ev):
     qtile.cmd_restart()
 
 def main(qtile):
-    pass
+    setup_screens()
