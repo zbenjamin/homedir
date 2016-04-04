@@ -225,7 +225,7 @@ def setup_screens():
     subprocess.Popen(['xrandr', '--output', 'VIRTUAL1', '--off', '--output',
                       'eDP1', '--primary', '--auto', '--pos', '0x0', '--rotate',
                       'normal', '--output', 'DP1', '--off', '--output', 'HDMI2',
-                      '--off', '--output', 'HDMI1', '--off', '--output', 'DP2',
+                      '--off', '--output', 'HDMI1', '--off', '--output', 'DP1-1',
                       '--auto', '--pos', '1920x0'])
 
 @hook.subscribe.screen_change
