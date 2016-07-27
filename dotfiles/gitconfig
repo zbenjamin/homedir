@@ -15,3 +15,5 @@
 	pretty = format:"%C(auto,yellow)commit %H%C(auto,reset)\nAuthor: %an <%ae>\nDate:   %cd\n\n%w(0,4,4)%B"
 [log]
     date = local
+[grep]
+	patternType = perl
